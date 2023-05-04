@@ -17,12 +17,12 @@ app.post('/git', (req, res) => {
     git().clone(url, (err) => {
         if (err) {
             console.error(`Error cloning repository: ${err.message}`);
-            res.send(500);
+            res.sendStatus(500);
         }
 
-        fs.writeFile('helloworld.txt', `hello world on ${date}!`, function(err) 
+        fs.writeFile('./tmp/helloworld.txt', `hello world on ${date}!`, function(err) 
         {
-            git()
+            git('./tmp')
                 .addRemote('origin', url, (err) => {
                     if (err) {
                         console.error(`Error cloning repo: ${err.message}`);
@@ -30,7 +30,7 @@ app.post('/git', (req, res) => {
                     }
                     console.log(err);
                 })
-                .add('helloworld.txt', (err) => {
+                .add('.', (err) => {
                     if (err) {
                         console.error(`Error adding file to repo: ${err.message}`);
                         res.sendStatus(500);
