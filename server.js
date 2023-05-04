@@ -23,35 +23,31 @@ app.post('/git', (req, res) => {
         fs.writeFile('./tmp/helloworld.txt', `hello world on ${date}!`, function(err) 
         {
             git('./tmp')
-                .addRemote('origin', url, (err) => {
+                .addRemote('temp', url, (err) => {
                     if (err) {
-                        console.error(`Error cloning repo: ${err.message}`);
+                        console.error(`Error cloning repo or adding remote: ${err.message}`);
                         res.sendStatus(500);
                     }
-                    console.log(err);
                 })
                 .add('.', (err) => {
                     if (err) {
                         console.error(`Error adding file to repo: ${err.message}`);
                         res.sendStatus(500);
                     }
-                    console.log(err);
                 })
                 .commit('Adding helloworld.txt', (err) => {
                     if (err) {
                         console.error(`Error committing changes: ${err.message}`);
                         res.sendStatus(500);
                     }
-                    console.log(err);
                 })
-                .push(['-u', 'origin', 'master'], (err) => {
+                .push(['-u', 'temp', 'master'], (err) => {
                     if (err) {
                         console.error(`Error pushing to origin: ${err.message}`);
                         res.sendStatus(500);
                     }
-                    console.log(err);
                 })
-                .removeRemote('origin');
+                .removeRemote('temp');
         });
     });
 
