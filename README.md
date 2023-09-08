@@ -1,14 +1,15 @@
-# Getting Started with Create React App
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Getting Started
 
 ## To run:
 
-### `npm start`
+### `yarn dev`
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-### `node server.js`
+### To make changes to a git repo:
 
-Runs the backend server.\
+Go to '/edit', or click the 'Make changes to a git repo' button in the app bar.
+Enter a public git repo and click 'Make Changes'.
+
+Note: Only one write per repo is supported at this time.
