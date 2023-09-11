@@ -1,1 +1,0 @@
-hello world on function toUTCString() { [native code] }!
